@@ -180,7 +180,7 @@ Diagnoses Upvest webhook failures and error states.
 > - Mandatory 10% Volatility Buffer: **€187.50**
 > - Total Required: **€2,062.50** | Available Cash: **€2,000.00** ❌ *(Shortfall: €62.50)*
 > 
-> *Adjusting to 12.0 shares passes the reserve check (€1,980.00 total) and generates valid gateway headers:*
+> *Adjusting to 12.0 shares passes the reserve check (€1,980.00 total) and generates valid gateway 
 
 ```json
 {
@@ -189,6 +189,7 @@ Diagnoses Upvest webhook failures and error states.
   "Digest": "SHA-256=R8usq2iX0dFXmPtXdFOoGMlyq44ObFOgELhUdn2ZIvo=",
   "Content-Type": "application/json"
 }
+```
 
 ---
 
