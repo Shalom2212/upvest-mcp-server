@@ -167,6 +167,30 @@ Diagnoses Upvest webhook failures and error states.
 
 ---
 
+## Example Usage
+
+### Pre-Trade Buffer Validation & Signature Generation
+
+> **Prompt:**  
+> *"Simulate a market buy order for 12.5 shares of Apple (ISIN US0378331005) with 2,000 EUR available cash, and generate the required RFC 9421 headers."*
+
+**Claude Response:**
+> **Order Rejection (Buffer Check):**
+> - Estimated Cost (12.5 × €150.00): **€1,875.00**
+> - Mandatory 10% Volatility Buffer: **€187.50**
+> - Total Required: **€2,062.50** | Available Cash: **€2,000.00** ❌ *(Shortfall: €62.50)*
+> 
+> *Adjusting to 12.0 shares passes the reserve check (€1,980.00 total) and generates valid gateway headers:*
+
+```json
+{
+  "Signature-Input": "sig1=(\"@method\" \"@path\" \"digest\");keyid=\"upv_sec_key_sandbox_01J9X8\";created=1792357433;nonce=\"749c71805c96404c\"",
+  "Signature": "sig1=:qy/Qusgf6IfSYx1ocPukF6IBqEHxqw3Ud3tZXqM/wV8=:",
+  "Digest": "SHA-256=R8usq2iX0dFXmPtXdFOoGMlyq44ObFOgELhUdn2ZIvo=",
+  "Content-Type": "application/json"
+}
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
